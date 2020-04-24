@@ -1,0 +1,29 @@
+{
+  "name": "plbackend",
+  "version": "0.0.1",
+  "description": "Puhelinluettelo backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "del -rf ./build  && cd ../puhelinluettelo/ && npm run build --prod && cp ./build/* ../plBackend/build -recurse",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint ." 
+  }  ,
+  "author": "Jukka Moilanen",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "mongoose": "^5.9.10"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.3"
+  }
+}
